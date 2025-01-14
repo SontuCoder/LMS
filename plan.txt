@@ -1,101 +1,71 @@
+time :- 2.46.00
+
+LMS name :- GenZTechno
+
 Technologies :-
+React for frontend;
+Node + express for backend;
+mongoDb Atlas for  data store.
+bcryptjs for hashing pass word.
+dotenv for hide secret keys.
+tailwind for design.
+jwt for pass authentication.
+
+cookie-parser
+ioredis
+ejs
+nodemailer for send email with otp verification.
 
 
 
 It is a Industrial level full stack LMS plartform, Highly protected from hacker and High speed.
 
-General Features:
-Dark & Light Themes:
+### **General Features:**  
+- **Dark & Light Themes:** Toggle between dark and light modes for a personalized interface experience.  
+- **Mobile Responsiveness:** Optimized for seamless access on all screen sizes, including mobile devices.  
+- **Advanced Form Validation System:** Real-time form validation ensures accurate and secure data entry.  
+- **Secure Payment System:** Supports secure payment options for course purchases.  
+- **Real-Time Notifications:** Instant notifications with sound alerts for user actions and updates.  
+- **Social Authentication:** Login/register using popular platforms like Google, Facebook, etc.  
+- **OTP Authentication:** Adds security with One-Time Password (OTP) verification during login or sensitive operations.  
 
-Option for users to toggle between dark and light themes for personalized interface experience.
-Mobile Responsiveness:
+---
 
-Fully optimized for mobile devices, ensuring a seamless experience on all screen sizes.
-Advanced Form Validation System:
+### **Admin Features:**  
+- **Admin Dashboard:** Displays comprehensive analytics and real-time data for courses and user activity.  
+- **Home Page Banner Update:** Easily upload and manage homepage banners for promotions or announcements.  
+- **FAQ Section Management:** Update and manage Frequently Asked Questions for user assistance.  
+- **Course Categories Management:** Add, edit, or delete course categories for platform organization.  
+- **Course Management:** Create, edit, and manage course materials, descriptions, and pricing.  
+- **Download Data:** Export course, user, and system data in formats like CSV or PDF.  
+- **Verified Admin Badge:** Displays an official badge next to admin profiles.  
+- **Q&A Section Management:** Moderate course-related questions and discussions for quality control.  
 
-Ensures accurate and secure data entry with real-time form validation.
-Secure Payment System:
+---
 
-Supports secure payment processing for course purchases with various payment options.
-Real-time Notifications:
+### **User Features:**  
+- **Course Search Functionality:** Search courses by keywords, categories, or instructors.  
+- **Course Reviews:** Add and view dynamically updated course reviews.  
+- **Course Purchase Restriction:** Course videos accessible only to users who have purchased them.  
+- **Profile Management:** Edit and update personal information and preferences.  
+- **Content Security:** Prevent recording, screenshots, or downloading of course materials.  
 
-Sends and receives real-time notifications with sound alerts for user actions and updates.
-Social Authentication:
+---
 
-Allows users to register/login using popular social media accounts like Google, Facebook, etc.
-OTP Authentication:
+### **Video and Content Protection:**  
+- **Video Access Control:** Lock course videos for unauthorized users.  
+- **No Recording/Downloading/Screen Capture:** Block video recording, screenshot capturing, and content downloading.  
 
-Provides One-Time Password (OTP) authentication for added security during login or sensitive actions.
-Admin Features:
-Admin Dashboard:
+---
 
-Comprehensive analytics and real-time data on courses, users, and other key system metrics.
-Home Page Banner Update:
+### **Security & User Experience:**  
+- **High-Level Security:** Robust protection against hacking and unauthorized access.  
+- **High-Speed Performance:** Fast page loads and smooth navigation using optimized caching techniques.  
 
-Admin can upload and update the homepage banner to highlight promotions, new courses, or important announcements.
-FAQ Section Management:
+---
 
-Admin can easily update and manage the FAQ section to provide relevant information to users.
-Course Categories Management:
-
-Admin can add, edit, or delete course categories to keep the platform organized.
-Course Management:
-
-Admin can create, edit, and manage courses, including uploading materials and setting pricing.
-Download Data:
-
-Admin can export data related to courses, users, and other statistics in a downloadable format (CSV, PDF, etc.).
-Verified Admin Badge:
-
-Display an Admin Verified badge next to the admin’s name for identification.
-Question and Answer Section:
-
-Admin can manage and moderate the Q&A section for courses, ensuring quality interaction.
-
-
-User Features:
-Course Search Functionality:
-
-Users can search for courses based on keywords, categories, or instructors.
-Course Reviews:
-
-Users can add reviews to courses they have enrolled in, and the reviews are dynamically updated.
-Course Purchase Restriction:
-
-Videos are only accessible to users who have purchased the course.
-Profile Management:
-
-Users can edit and update their profile details, including personal information and preferences.
-Security Features:
-
-Users cannot record, take screenshots, or download course videos to prevent unauthorized sharing of content.
-
-
-Video and Content Protection:
-Video Access Control:
-
-Course videos are locked to users who have not purchased the course, preventing unauthorized access.
-No Recording/Downloading/Screen Capture:
-
-Measures in place to block video recording, screenshot capturing, and downloading of content.
-
-
-Security and User Experience:
-High-Level Security:
-
-Platform designed with robust security measures to protect user data and prevent hacker activities.
-High-Speed Performance:
-
-Optimized for speed, ensuring quick page loads and a smooth browsing experience for users, using cache mantain.
-
-
-Additional Features:
-Admin-Editable Course Content:
-
-Admin can edit previously uploaded courses, including video materials, lessons, and course descriptions.
-Analytics & Reporting:
-
-Admins can view detailed analytics for courses, users, and system performance.
-Verified Admin Profile:
-
-Admins receive a verified badge, confirming their official status on the platform.
+### **Additional Features:**  
+- **Admin-Editable Course Content:** Edit previously uploaded courses, including video lessons and materials.  
+- **Analytics & Reporting:** Detailed insights for courses, users, and system performance.  
+- **Verified Admin Profile:** Badge for verified admin identification.  
+- **Advanced Error Handling:** Custom error handling using object-oriented programming (OOP) concepts.

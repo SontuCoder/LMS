@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email from GenZTechno </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        .email-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            background-color: #007bff;
+            color: #ffffff;
+            text-align: center;
+            padding: 10px 0;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .content {
+            padding: 20px;
+            text-align: left;
+        }
+
+        .otp-code {
+            font-size: 24px;
+            font-weight: bold;
+            color: #007bff;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="email-container">
+        <div class="header">
+            <h1>Wellcome to GenZTechno</h1>
+        </div>
+        <div class="content">
+            <p>Dear <%= user %>,</p>
+            <p>Thank you for registering with <strong>GenZTechno </strong>.</p>
+            <p>Your one-time password (OTP) for verification is:</p>
+            <div class="otp-code">
+                <%= activationToken %>
+            </div>
+            <p>Please use this code within 5 minutes to complete your verification process.</p>
+        </div>
+        <div class="footer">
+            <p>&copy; 2025 <strong>GenZTechno </strong>. All Rights Reserved.</p>
+        </div>
+    </div>
+</body>
+
+</html>

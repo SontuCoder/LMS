@@ -1,5 +1,8 @@
 import mongoose from 'mongoose';
 import bcrypt from 'bcryptjs';
+import dotenv from 'dotenv';
+dotenv.config();
+import jwt from 'jsonwebtoken';
 
 const emailRegexPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -21,8 +24,7 @@ const userSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: [true, "Please enter your password"],
-        minlength: [6, "Passwordd must be at least 6 charecters."],
+        minlength: [6, "Password must be at least 6 charecters."],
         select: false,
     },
     avatar: {
@@ -59,5 +61,23 @@ userSchema.pre('save', async function (next) {
 userSchema.methods.comparePassword = async function (enteredPassword) {
     return await bcrypt.compare(enteredPassword, this.password);
 };
+
+
+// Sign access token
+userSchema.methods.SignAccessToken = function(){
+    return jwt.sign({id: this._id}, process.env.ACCESS_TOKEN || '',{
+        expiresIn:"5m"
+    });
+}
+
+// Sign refress token
+userSchema.methods.SignRefreshToken = function(){
+    return jwt.sign({id: this._id}, process.env.REFRESH_TOKEN || '',{
+        expiresIn:"3d"
+    });
+}
+
+
+
 
 export default mongoose.model("User", userSchema);

@@ -11,6 +11,14 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 import sendMail from '../utils/SendMail.js';
+import { accessToenOption, sendToken,refreshToenOption } from '../utils/jwt.js';
+import redis from '../config/redis.js';
+import { getUserById } from '../services/userService.js';
+
+
+
+
+
 
 // register user
 
@@ -103,4 +111,128 @@ export const activateUser = AsyncErrorMiddle(
             return next(new ErrorHandler(err.message, 400));
         }
     }
-)
+);
+
+
+// Login user
+
+export const loginUser = AsyncErrorMiddle(async (req, res, next) => {
+    try {
+        const { email, password } = req.body;
+        if (!email || !password) {
+            return next(new ErrorHandler("Please enter email and password", 400));
+        }
+
+        const user = await userModel.findOne({ email }).select("+password");
+        if (!user) {
+            return next(new ErrorHandler("Invalid email or password", 400));
+        }
+
+        const isPasswordMatch = await user.comparePassword(password);
+
+        if (!isPasswordMatch) {
+            return next(new ErrorHandler("Invalid email or password", 400));
+        }
+
+        sendToken(user, 200, res);
+    } catch (err) {
+        return next(new ErrorHandler(err.message, 400));
+    }
+})
+
+
+// Logout user
+export const logoutUser = AsyncErrorMiddle(async (req, res, next) => {
+    try {
+        res.cookie('access_token', "", { maxAge: 1 });
+        res.cookie('refresh_token', "", { maxAge: 1 });
+        const userId = req.user?._id ||''
+        redis.del(userId);
+        res.status(200).json({
+            success: true,
+            message: "Logged out successfully"
+        })
+    } catch (err) {
+        return next(new ErrorHandler(err.message, 400));
+    }
+});
+
+
+// update access token
+
+export const updateAccessToken = AsyncErrorMiddle(async(req,res, next)=>{
+    try{
+        const refresh_token = req.cookies.refresh_token;
+        const decoded = jwt.verify(refresh_token, process.env.REFRESH_TOKEN);
+        
+        if(!decoded){
+            return next(new ErrorHandler("Invalid refresh token", 400));
+        }
+
+        const session = await redis.get(decoded.id);
+
+        if(!session){
+            return next(new ErrorHandler("Please login to continue", 400));
+        }
+
+        const user = JSON.parse(session);
+
+        const accessToken = jwt.sign(
+            { id: user._id },
+            process.env.ACCESS_TOKEN,
+            { expiresIn: "5m" }
+        );
+
+        const refreshToken = jwt.sign(
+            { id: user._id },
+            process.env.REFRESH_TOKEN,
+            { expiresIn: "3d" }
+        );
+
+        res.cookie("access_token", accessToken, accessToenOption);
+        res.cookie("refresh_token", refreshToken, refreshToenOption);
+
+        res.status(200).json({
+            success: true,
+            accessToken
+        });
+    
+    } catch (err) {
+        return next(new ErrorHandler(err.message, 400));
+    }
+});
+
+
+//get user Info
+
+export const getUserInfo = AsyncErrorMiddle(async(req, res, next)=>{
+    try{
+        const userId = req.user?._id;
+        return getUserById(userId,res);
+    } catch (err) {
+        return next(new ErrorHandler(err.message, 400));
+    }
+})
+
+
+// Social auth
+export const socialAuth = AsyncErrorMiddle(async (req, res, next) => {
+    try {
+        const { email, name, avatar } = req.body;
+        const user = await userModel.findOne({ email });
+
+        if (user) {
+            sendToken(user, 200, res);
+        } else {
+            const newUser = await userModel.create({
+                name,
+                email,
+                avatar
+            });
+            sendToken(newUser, 200, res);
+        }
+    } catch (err) {
+        return next(new ErrorHandler(err.message, 400));
+    }
+});
+

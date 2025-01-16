@@ -14,6 +14,8 @@ import sendMail from '../utils/SendMail.js';
 import { accessToenOption, sendToken,refreshToenOption } from '../utils/jwt.js';
 import redis from '../config/redis.js';
 import { getUserById } from '../services/userService.js';
+import cloudinary from 'cloudinary';
+
 
 
 
@@ -189,6 +191,8 @@ export const updateAccessToken = AsyncErrorMiddle(async(req,res, next)=>{
             { expiresIn: "3d" }
         );
 
+        req.user = user;
+
         res.cookie("access_token", accessToken, accessToenOption);
         res.cookie("refresh_token", refreshToken, refreshToenOption);
 
@@ -236,3 +240,120 @@ export const socialAuth = AsyncErrorMiddle(async (req, res, next) => {
     }
 });
 
+
+// update user info
+export const updateUserInfo = AsyncErrorMiddle(async(req, res, next)=>{
+    try{
+        const {name, email} = req.body;
+        const userId = req.user?._id;
+        const user = await userModel.findById(userId);
+
+        if(user && email) {
+            const isEmailExist = await userModel.findOne({ email });
+            if(isEmailExist) {
+                return next(new ErrorHandler("Email already exists", 400));
+            }
+            user.email = email;
+        }
+
+        if(name && user) {
+            user.name = name;
+        }
+
+        await user?.save();
+        await redis.set(userId, JSON.stringify(user));
+
+        res.status(200).json({
+            success: true,
+            user
+        });
+    } catch (err) {
+        return next(new ErrorHandler(err.message, 400));
+    }
+});
+
+
+// update user password
+export const updateUserPass = AsyncErrorMiddle(async(req, res, next)=>{
+    try{
+        const { oldPass, newPass } = req.body;
+
+        if (!oldPass || !newPass) {
+            return next(new ErrorHandler("Please enter old and new passwords.", 400));
+        }
+    
+        const user = await userModel.findById(req.user?._id).select("+password");
+        if (!user) {
+            return next(new ErrorHandler("Invalid user", 400));
+        }
+    
+        const isPassMatch = await user.comparePassword(oldPass);
+        if (!isPassMatch) {
+            return next(new ErrorHandler("Invalid old password", 400));
+        }
+    
+        user.password = newPass;
+        await user.save();
+    
+        const userId = req.user._id.toString();
+        await redis.set(userId, JSON.stringify({ id: user._id }));
+    
+        res.status(200).json({
+            success: true,
+            user
+        });
+    } catch (err) {
+        return next(new ErrorHandler(err.message, 400));
+    }
+});
+
+
+// update profile pic
+export const updateUserAvatar = AsyncErrorMiddle(async (req, res, next) => {
+    try{
+    const { avatar } = req.body;
+    const userId = req.user?._id;
+
+    // Validate request data
+    if (!avatar) {
+        return next(new ErrorHandler("Please provide an avatar image.", 400));
+    }
+
+    // Find user
+    const user = await userModel.findById(userId);
+    if (!user) {
+        return next(new ErrorHandler("User not found.", 404));
+    }
+
+    // Delete previous avatar if it exists
+    if (user.avatar?.public_id) {
+        await cloudinary.v2.uploader.destroy(user.avatar.public_id);
+    }
+
+    // Upload new avatar to Cloudinary
+    const myCloud = await cloudinary.v2.uploader.upload(avatar, {
+        folder: "avatars",
+        width: 150,
+        crop: "scale",
+    });
+
+    // Update user avatar details
+    user.avatar = {
+        public_id: myCloud.public_id,
+        url: myCloud.secure_url,
+    };
+
+    await user.save();
+
+    // Store only necessary user details in Redis
+    await redis.set(userId.toString(), JSON.stringify({ id: user._id, avatar: user.avatar.url }));
+
+    res.status(200).json({
+        success: true,
+        message: "Avatar updated successfully.",
+        user
+    })
+    } catch (err) {
+        return next(new ErrorHandler(err.message, 400));
+    }
+});

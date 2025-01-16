@@ -4,6 +4,7 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import {ErrorMiddleware} from './middleware/error.js';
 import userRouter from './routers/userRoute.js';
+import courseRouter from './routers/courseRoute.js';
 
 
 // make body perser
@@ -17,6 +18,7 @@ app.use(cors({ origin: process.env.ORIGIN }));
 
 // Router
 app.use('/api/v1', userRouter);
+app.use('/api/v1',courseRouter);
 
 // testing api
 app.get('/test', (req, res, next) => {

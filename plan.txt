@@ -1,4 +1,4 @@
-time :- 4.51.00
+time :- 6.15.00
 
 LMS name :- GenZTechno
 
@@ -11,9 +11,9 @@ dotenv for hide secret keys.
 tailwind for design.
 jwt for pass authentication.
 
-cookie-parser
-ioredis
-ejs
+cookie-parser to store refresh user token.
+ioredis for access redis to store data( resticted course, activation user token) in cache memory.
+ejs for set our mail.
 nodemailer for send email with otp verification.
 
 
@@ -28,6 +28,8 @@ It is a Industrial level full stack LMS plartform, Highly protected from hacker 
 - **Real-Time Notifications:** Instant notifications with sound alerts for user actions and updates.  
 - **Social Authentication:** Login/register using popular platforms like Google, Facebook, etc.  
 - **OTP Authentication:** Adds security with One-Time Password (OTP) verification during login or sensitive operations.  
+- **When User ask question Admin get notification, When Admin give answer User get mail.
+
 
 ---
 

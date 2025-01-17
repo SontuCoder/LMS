@@ -7,7 +7,7 @@ const reviewSchema = new mongoose.Schema({
         default: 0,
     },
     comment: String,
-
+    commentReplies:[Object]
 });
 
 const linkSchema = new mongoose.Schema({
@@ -17,8 +17,8 @@ const linkSchema = new mongoose.Schema({
 
 const commentSchema = new mongoose.Schema({
     user: Object,
-    comment: String,
-    commentReplies: [Object],
+    question: String,
+    questionReplies: [Object],
 })
 
 const courseData = new mongoose.Schema({

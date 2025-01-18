@@ -5,6 +5,7 @@ import cookieParser from 'cookie-parser';
 import {ErrorMiddleware} from './middleware/error.js';
 import userRouter from './routers/userRoute.js';
 import courseRouter from './routers/courseRoute.js';
+import orderRouter from './routers/orderRoute.js';
 
 
 // make body perser
@@ -17,8 +18,7 @@ app.use(cookieParser());
 app.use(cors({ origin: process.env.ORIGIN }));
 
 // Router
-app.use('/api/v1', userRouter);
-app.use('/api/v1',courseRouter);
+app.use('/api/v1', userRouter, courseRouter, orderRouter);
 
 // testing api
 app.get('/test', (req, res, next) => {

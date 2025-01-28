@@ -1,4 +1,4 @@
-time :- 6.45.00
+time :- 7.02.00
 
 LMS name :- GenZTechno
 
@@ -10,11 +10,11 @@ bcryptjs for hashing pass word.
 dotenv for hide secret keys.
 tailwind for design.
 jwt for pass authentication.
-
 cookie-parser to store refresh user token.
 ioredis for access redis to store data( resticted course, activation user token) in cache memory.
 ejs for set our mail.
 nodemailer for send email with otp verification.
+node-corn for delete notification after 1 month.
 
 
 
@@ -29,12 +29,13 @@ It is a Industrial level full stack LMS plartform, Highly protected from hacker 
 - **Social Authentication:** Login/register using popular platforms like Google, Facebook, etc.  
 - **OTP Authentication:** Adds security with One-Time Password (OTP) verification during login or sensitive operations.  
 - **When User ask question Admin get notification, When Admin give answer User get mail.
+- **Delete Notifications automatically after 1 month.
 
 
 ---
 
 ### **Admin Features:**  
-- **Admin Dashboard:** Displays comprehensive analytics and real-time data for courses and user activity.  
+- **Admin Dashboard:** Displays comprehensive analytics of last 12 months and real-time data for courses and user activity.  
 - **Home Page Banner Update:** Easily upload and manage homepage banners for promotions or announcements.  
 - **FAQ Section Management:** Update and manage Frequently Asked Questions for user assistance.  
 - **Course Categories Management:** Add, edit, or delete course categories for platform organization.  

@@ -13,7 +13,7 @@ const __dirname = path.dirname(__filename);
 import sendMail from '../utils/SendMail.js';
 import { accessToenOption, sendToken,refreshToenOption } from '../utils/jwt.js';
 import redis from '../config/redis.js';
-import { getUserById } from '../services/userService.js';
+import { getUserById, getAllUsersServices, updateUserRoleServices} from '../services/userService.js';
 import cloudinary from 'cloudinary';
 
 
@@ -355,5 +355,52 @@ export const updateUserAvatar = AsyncErrorMiddle(async (req, res, next) => {
     })
     } catch (err) {
         return next(new ErrorHandler(err.message, 400));
+    }
+});
+
+
+// get all users
+export const getAllUsersAdmin = AsyncErrorMiddle(async (req, res, next) => {
+    try {
+        getAllUsersServices(res);
+    } catch (err) {
+        return next(new ErrorHandler(err.message, 500));
+    }
+});
+
+
+// update user role by admin
+export const updateUserRole = AsyncErrorMiddle(async (req, res, next) => {
+    try {
+        const { userId, role } = req.body;
+        updateUserRoleServices(userId, role, res);
+    } catch (err) {
+        return next(new ErrorHandler(err.message, 500));
+    }
+});
+
+// delete user by admin
+export const deleteUser = AsyncErrorMiddle(async (req, res, next) => {
+    try {
+        const userId = req.params.id;
+        const user = await userModel.findById(userId);
+        if (!user) {
+            return next(new ErrorHandler("User not found.", 404));
+        }
+
+        // Delete user avatar from Cloudinary
+        // if (user.avatar?.public_id) {
+        //     await cloudinary.v2.uploader.destroy(user.avatar.public_id);
+        // }
+
+        await userModel.deleteOne({ _id: userId });
+        await redis.del(userId);
+
+        res.status(200).json({
+            success: true,
+            message: "User deleted successfully."
+        });
+    } catch (err) {
+        return next(new ErrorHandler(err.message, 500));
     }
 });

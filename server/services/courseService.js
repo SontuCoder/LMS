@@ -9,39 +9,10 @@ export const createCourse = async (courseData, res) => {
 }
 
     // Get all courses
-//     async getAllCourses() {
-//         try {
-//             return await Course.find({});
-//         } catch (error) {
-//             throw new Error(`Error fetching courses: ${error.message}`);
-//         }
-//     },
-
-//     // Get course by ID
-//     async getCourseById(courseId) {
-//         try {
-//             return await Course.findById(courseId);
-//         } catch (error) {
-//             throw new Error(`Error fetching course: ${error.message}`);
-//         }
-//     },
-
-//     // Update course
-//     async updateCourse(courseId, updateData) {
-//         try {
-//             return await Course.findByIdAndUpdate(courseId, updateData, { new: true });
-//         } catch (error) {
-//             throw new Error(`Error updating course: ${error.message}`);
-//         }
-//     },
-
-//     // Delete course
-//     async deleteCourse(courseId) {
-//         try {
-//             return await Course.findByIdAndDelete(courseId);
-//         } catch (error) {
-//             throw new Error(`Error deleting course: ${error.message}`);
-//         }
-//     }
-// };
-
+export const getAllCoursesService = async (res) => {
+        const courses = await courseModel.find().sort({createdAt: -1});
+        res.status(200).json({
+            success:true,
+            courses
+        })
+}

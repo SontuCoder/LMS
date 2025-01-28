@@ -2,7 +2,7 @@ import courseModel from '../models/course.model.js';
 import ErrorHandler from '../utils/ErrorHandler.js';
 import { AsyncErrorMiddle } from '../middleware/catchAsyncError.js';
 import cloudinary from 'cloudinary';
-import { createCourse } from '../services/courseService.js';
+import { createCourse, getAllCoursesService } from '../services/courseService.js';
 import redis from '../config/redis.js';
 import mongoose from 'mongoose';
 import ejs, { Template } from 'ejs';
@@ -11,6 +11,7 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 import sendMail from '../utils/SendMail.js';
+import Notification from '../models/notification.model.js';
 
 
 // upload couser :- 
@@ -194,6 +195,12 @@ export const addQuestions = AsyncErrorMiddle(async (req, res, next) => {
         // add question to course content
         courseContent.question.push(newQuestion);
 
+        await Notification.create({
+            user: req.user?._id,
+            title: "New Question Received",
+            message: `${req.user?.name} has asked a question in ${courseContent?.title}`
+        });
+
         // save updated course
         await course?.save();
 
@@ -242,23 +249,11 @@ export const addAnswer = AsyncErrorMiddle(async (req, res, next) => {
 
         // notification
         if(req.user._id === question.user._id){
-            // create notification
-            // await notificationModel.create({
-            //     user: req.user?._id,
-            //     title: "New Question Reply Received",
-            //     message: `${req.user?.name} has replied to your question in ${courseContent.title}`
-            // });
-
-            // send email
-            // await sendMail({
-            //     email: req.user?.email,
-            //     subject: "New Question Reply Received",
-            //     template: "question-reply.ejs",
-            //     data: {
-            //         name: req.user?.name,
-            //         title: courseContent.title
-            //     }
-            // });
+            await Notification.create({
+                user: req.user?._id,
+                title: "Your Question Answered",
+                message: `Your question has been answered in ${courseContent?.title}`
+            });
         } else {
             const data = {
                 name: question.user.name,
@@ -387,3 +382,36 @@ export const replyToReview = AsyncErrorMiddle(async (req, res, next) => {
     }
 });
 
+
+//get all courses for admin
+export const getAllCoursesAdmin = AsyncErrorMiddle(async (req, res, next) => {
+    try {
+        getAllCoursesService(res);
+    } catch (error) {
+        return next(new ErrorHandler(error.message, 500));
+    }
+});
+
+// delete course by admin
+export const deleteCourse = AsyncErrorMiddle(async (req, res, next) => {
+    try {
+        const courseId = req.params.id;
+
+        const course = await courseModel.findById(courseId);
+
+        if (!course) {
+            return next(new ErrorHandler("Course not found", 404));
+        }
+
+        await courseModel?.deleteOne({_id: courseId});
+        await redis.del(courseId);
+
+        res.status(200).json({
+            success: true,
+            message: "Course deleted successfully"
+        });
+
+    } catch (error) {
+        return next(new ErrorHandler(error.message, 500));
+    }
+});

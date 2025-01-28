@@ -85,3 +85,16 @@ export const createOrder = AsyncErrorMiddle(async (req, res, next) => {
         return next(new ErrorHandler(error.message, 500));
     }
 });
+
+// Get all orders of admin
+export const getOrdersAdmin = AsyncErrorMiddle(async (req, res, next) => {
+    try {
+        const orders = await Order.find().sort({ createdAt: -1 });
+        return res.status(200).json({
+            success: true,
+            orders
+        });
+    } catch (error) {
+        return next(new ErrorHandler(error.message, 500));
+    }
+});

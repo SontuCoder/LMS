@@ -8,6 +8,7 @@ import courseRouter from './routers/courseRoute.js';
 import orderRouter from './routers/orderRoute.js';
 import notificationRouter from './routers/notificationRoute.js';
 import analyticsRouter from './routers/analyticsRoute.js';
+import layoutRouters from './routers/layoutRoute.js';
 
 
 
@@ -21,7 +22,7 @@ app.use(cookieParser());
 app.use(cors({ origin: process.env.ORIGIN }));
 
 // Router
-app.use('/api/v1', userRouter, courseRouter, orderRouter, notificationRouter, analyticsRouter);
+app.use('/api/v1', userRouter, courseRouter, orderRouter, notificationRouter, analyticsRouter, layoutRouters);
 
 // testing api
 app.get('/test', (req, res, next) => {

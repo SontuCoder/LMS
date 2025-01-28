@@ -18,10 +18,6 @@ import cloudinary from 'cloudinary';
 
 
 
-
-
-
-
 // register user
 
 export const registrationUser = AsyncErrorMiddle(async (req, res, next) => {
@@ -195,6 +191,8 @@ export const updateAccessToken = AsyncErrorMiddle(async(req,res, next)=>{
 
         res.cookie("access_token", accessToken, accessToenOption);
         res.cookie("refresh_token", refreshToken, refreshToenOption);
+
+        await redis.set(user._id.toString(), JSON.stringify(user), "EX", 7*24*60*60);
 
         res.status(200).json({
             success: true,
@@ -387,11 +385,6 @@ export const deleteUser = AsyncErrorMiddle(async (req, res, next) => {
         if (!user) {
             return next(new ErrorHandler("User not found.", 404));
         }
-
-        // Delete user avatar from Cloudinary
-        // if (user.avatar?.public_id) {
-        //     await cloudinary.v2.uploader.destroy(user.avatar.public_id);
-        // }
 
         await userModel.deleteOne({ _id: userId });
         await redis.del(userId);

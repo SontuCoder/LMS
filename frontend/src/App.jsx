@@ -1,10 +1,9 @@
-
+import Header from "./Sections/Header"
 
 function App() {
+  
   return (
-    <>
-    <div className="bg-slate-500">Sontu</div>
-    </>
+    <Header/>
   )
 }
 

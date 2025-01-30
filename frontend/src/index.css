@@ -1,9 +1,46 @@
 @import "tailwindcss";
 
+/*  light mode theme  */
+:root {
+
+    /* font */
+    --font-inter: 'Inter', sans-serif;
+    --font-poppins: 'Poppins', sans-serif;
+
+    /*  header  */
+    --header_bg : #332c49;
+    --nav_btn : #7b5bac;
+
+    /* blob */
+    --blob_1 : #7b5bac;
+    --blob_2 : #332c49;
+
+
+
+
+    --body_bg : white;
+    --link_color : navy;
+}
+
+/*  Dark mode theme  */
+[data-theme = "dark"] {
+
+    /*  header  */
+    --header_bg : #181822;
+    --nav_btn : #332c49;
+
+
+    --body_bg : black;
+    --link_color : cyan;
+}
 
 /* ============================== */
 /* Base */
 /* ============================== */
+
+*{
+    transition: all 0.3s ease-in-out, all 0.3s ease-in-out;
+}
 
 html{
     scroll-behavior: smooth;
@@ -16,17 +53,10 @@ body{
 }
 
 /* ============================== */
-/* HEADER */
+/* COMPONENTS */
 /* ============================== */
 
-.headerdiv{
-    grid-template-columns: auto 3fr auto;
-    gap: 1rem;
-}
-
-.menu-button{
-    @apply  w-10 h-10 grid place-items-center bg-[#332c49] rounded-xl ring-inset ring-1 ring-zinc-600 backdrop-blur-2xl hover:bg-zinc-700 hover:scale-110 transition-transform duration-300 ease-in-out cursor-pointer active:scale-95 md:hidden;
-}
+/* Navbar */
 
 .navbar{
     @apply absolute top-full mt-2 right-0 min-w-40 p-2 rounded-xl ring-inset ring-1 ring-zinc-600 bg-[#332c49] scale-90 isolate blur-md opacity-0 invisible transition-all duration-200 ease-in-out md:static md:flex md:items-center md:mt-0 md:opacity-100 md:visible md:scale-100 md:blur-none md:bg-transparent md:ring-0 ;
@@ -48,3 +78,76 @@ body{
 .navbar .active-box{
     @apply absolute top-2 left-2 right-2 h-9 bg-zinc-50 rounded-lg -z-10 transition-all duration-500 ease-in-out;
 }
+
+
+/* ============================== */
+/* TOPOLOGY */
+/* ============================== */
+
+.heading{
+    @apply text-3xl font-bold font-[--font-poppins];
+
+}
+
+.para{
+    @apply text-sm font-semibold font-[--font-inter];
+}
+
+
+/* ============================== */
+/* HEADER */
+/* ============================== */
+
+header{
+    background: var(--header_bg);
+    color: #d1c7d0; 
+}
+
+.headerdiv{
+    grid-template-columns: auto 3fr auto auto;
+    gap: 1rem;
+}
+
+.menu-button{
+    @apply  w-10 h-10 grid place-items-center  rounded-xl ring-inset ring-1 ring-zinc-600 backdrop-blur-2xl hover:bg-zinc-700 hover:scale-110 transition-transform duration-300 ease-in-out cursor-pointer active:scale-95 md:hidden bg-[var(--nav_btn)];
+}
+
+/* ============================== */
+/* COMMON FOR ALL SECTIONS */
+/* ============================== */
+
+section{
+    @apply w-[90%] border bg-[#48A6A7];
+}
+
+
+/* ============================== */
+/* HERO */
+/* ============================== */
+
+.home{
+    @apply flex items-center justify-between gap-8 w-[100%] max-w-[1200px] my-0 mx-auto px-4 relative py-10; 
+}
+
+.blob{
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    transform: translate(-50%, -50%);
+    animation: moveBlob 5s infinite ease-in-out;
+}
+
+@keyframes moveBlob {
+
+    0%,
+    100% {
+        border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+        transform: translate(-50%, -50%) scale(1);
+        background: var(--blob_1);
+    }
+
+    50% {
+        border-radius: 40% 60% 60% 40% / 50% 50% 50% 50%;
+        transform: translate(-50%, -50%) scale(1.1);
+        background: var(--blob_2);
+    }
+}
+

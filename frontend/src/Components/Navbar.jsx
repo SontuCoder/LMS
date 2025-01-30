@@ -36,6 +36,8 @@ const Navbar = ({navOpen}) => {
         initActiveBox();
     },[]);
 
+    window.addEventListener('resize', initActiveBox);
+
     const navItems = [
         {
             label: 'Home',

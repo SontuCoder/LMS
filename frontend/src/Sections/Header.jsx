@@ -44,7 +44,7 @@ const Header = () => {
                         </span>
                     </button>
 
-                    <Navbar navOpen={navOpen}/>
+                    <Navbar navOpen={navOpen} setNavOpen={setNavOpen}/>
                 </div>
 
                 <div className="flex justify-end">

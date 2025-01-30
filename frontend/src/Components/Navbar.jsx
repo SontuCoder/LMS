@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 
 
-const Navbar = ({navOpen}) => {
+const Navbar = ({navOpen, setNavOpen}) => {
     
     const lastActiveLink = useRef(null);
     const activeBox = useRef(null);
@@ -30,6 +30,9 @@ const Navbar = ({navOpen}) => {
             activeBox.current.style.width = `${e.target.offsetWidth}px`;
             activeBox.current.style.height = `${e.target.offsetHeight}px`;
         }
+        setTimeout(()=>{
+            setNavOpen(false);
+        },500);
     }
 
     useEffect(() => {
@@ -91,7 +94,8 @@ const Navbar = ({navOpen}) => {
 
 
 Navbar.propTypes = {
-    navOpen: PropTypes.bool.isRequired
+    navOpen: PropTypes.bool.isRequired,
+    setNavOpen: PropTypes.func.isRequired
 }
 
 export default Navbar

@@ -25,7 +25,7 @@ const Header = () => {
 
 
     return (
-        <header className='fixed top-0 left-0 w-full h-16 flex items-center z-40 '>
+        <header className='fixed top-0 left-0 w-full h-16 flex items-center z-40'>
             <div className=" headerdiv max-w-screen-2xl w-full mx-auto px-4 flex justify-between items-center md:px-8 md:grid">
 
                 <h1>
@@ -34,7 +34,7 @@ const Header = () => {
                     </a>
                 </h1>
 
-                <div className="  w-[100%] relative flex justify-end ml:auto">
+                <div className=" w-[100%] relative flex justify-end ml:auto">
                     <button 
                         className='menu-button' 
                         onClick={()=>setNavOpen(!navOpen)}

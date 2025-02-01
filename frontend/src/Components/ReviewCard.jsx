@@ -7,7 +7,7 @@ const ReviewCard = ({ avatarUrl, name = "Sontu", rating=4, review ="Very good" }
         const stars = [];
         for (let i = 1; i <= 5; i++) {
             stars.push(
-                <span key={i} className={i <= rating ? 'text-yellow-400' : 'text-gray-300'}>
+                <span key={i} className={`${i <= rating ? 'text-yellow-400' : 'text-white'} `}>
                     ★
                 </span>
             );
@@ -16,7 +16,7 @@ const ReviewCard = ({ avatarUrl, name = "Sontu", rating=4, review ="Very good" }
     };
 
     return (
-        <div className="rounded-lg overflow-hidden shadow-[0px_0px_10px_5px_rgba(0,0,0,1)] bg-white p-2 w-full max-w-100 m-2 sm:w-[45%] lg:w-[30%]">
+        <div className="rounded-lg overflow-hidden shadow-[0px_0px_10px_3px_var(--st)] review-card p-2 w-full max-w-100 m-2 sm:w-[45%] lg:w-[30%] hover:scale-105 ">
             {/* User Avatar and Name */}
             <div className="flex items-center space-x-4 mb-2">
                 <img
@@ -24,12 +24,13 @@ const ReviewCard = ({ avatarUrl, name = "Sontu", rating=4, review ="Very good" }
                     src={Home_img}
                     alt={name}
                 />
-                <div>
-                    <div className="font-bold text-lg">{name}</div>
-                    <div className="flex items-center space-x-1">
+                <div className=''>
+                    <div className="font-bold text-lg flex text-wrap">{name}
+                    <span className="ml-3 flex items-center space-x-1">
                         {renderStars(rating)}
+                    </span>
                     </div>
-                    <p className="text-gray-700 text-base font-semibold">{review}</p>
+                    <p className="text-[var(--st)] text-base font-semibold">{review}</p>
                 </div>
             </div>
 

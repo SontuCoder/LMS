@@ -1,3 +1,5 @@
+import { ReactLenis } from 'lenis/react';
+
 import CourseAds from "./Sections/CourseAds"
 import FAQ from "./Sections/FAQ"
 import Footer from "./Sections/Footer"
@@ -8,16 +10,19 @@ import Review from "./Sections/Review"
 function App() {
 
   return (
-    <div className="App">
-      <Header />
-      <main className="relative top-8 flex flex-col items-center pt-6">
-        <Hero />
-        <CourseAds/>
-        <Review />
-        <FAQ/>
-        <Footer/>
-      </main>
-    </div>
+    <ReactLenis root>
+      
+      <div className="App">
+        <Header />
+        <main className="relative top-8 flex flex-col items-center pt-6">
+          <Hero />
+          <CourseAds />
+          <Review />
+          <FAQ />
+          <Footer />
+        </main>
+      </div>
+    </ReactLenis>
   )
 }
 

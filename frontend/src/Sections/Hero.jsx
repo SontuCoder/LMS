@@ -4,21 +4,21 @@ import {Button1} from '../Components/Buttons';
 
 const Hero = () => {
     return (
-        <div className="home">
-            <section className='home-sec'>
-            <div className="left-side-home  text-wrap w-[50%]">
+        <div id="home" className="home scroll-mt-16">
+            <section className='home-sec text-[var(--pt)]'>
+            <div className="left-side-home text-wrap w-[50%]">
                 <h1 className="heading">
-                    Gen<span className='text-[var(--span_home)]'>Z</span>Techno
+                    Gen<span className='text-[var(--span)]'>Z</span>Techno
                 </h1>
                 <p className='para'>
-                    Learn, <span className='text-[var(--span_home)]'>Grow,</span> Succeed
+                    Learn, <span className='text-[var(--span)]'>Grow,</span> Succeed
                 </p>
                 <p className='para mb-5'>
-                    Your Learning <span className='text-[var(--span_home)]'>Hub</span> Awaits!
+                    Your Learning <span className='text-[var(--span)]'>Hub</span> Awaits!
                 </p>
 
 
-                <Button1 href={'https://www.google.com'} lable={'All Courses'} color={"#000"} bg_color={'#453d63'} />
+                <Button1 href={'https://www.google.com'} lable={'All Courses'}  />
             </div>
 
 

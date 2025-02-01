@@ -13,8 +13,8 @@ const FAQ = () => {
                 </svg>
             </div>
 
-            <section className="mx-auto">
-                <h4 className="text-center mb-5 text-2xl sm:text-3xl md:text-5xl font-bold">Some <span className="text-[var(--span_home)]">Inportent</span> Questions</h4>
+            <section className="">
+                <h4 className="text-center mb-5 heading">Some <span className="text-[var(--span)]">Importent</span> Questions</h4>
                 <div className="flex flex-wrap w-full justify-evenly items-center">
                     <FAQCard
                         question="What is Tailwind CSS?"

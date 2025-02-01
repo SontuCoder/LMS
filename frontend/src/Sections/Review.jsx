@@ -3,7 +3,7 @@ import ReviewCard from '../Components/ReviewCard.jsx';
 
 const Review = () => {
     return (
-        <div id='reviews' className='review py-20'>
+        <div id='reviews' className='review py-20 bg-[var(--b1)]'>
             {/* Waves */}
             <div className="custom-shape-divider-top-1738261877">
                 <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
@@ -13,8 +13,8 @@ const Review = () => {
                 </svg>
             </div>
 
-            <section className="mx-auto">
-                <h3 className="text-center mb-5 text-2xl sm:text-3xl md:text-5xl font-bold">Reviews About <span className="text-[var(--span_home)]">Our</span> Courses</h3>
+            <section className="">
+                <h3 className="text-center mb-5 heading">Reviews About <span className="text-[var(--span)]">Our</span> Courses</h3>
                 <div className="flex flex-wrap w-full justify-evenly items-center">
                     <ReviewCard/>
                     <ReviewCard/>

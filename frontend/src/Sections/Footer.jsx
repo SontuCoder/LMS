@@ -1,11 +1,12 @@
 import React from 'react'
 import ContactCard from '../Components/ContactCard';
-import BootCamp from '../Components/BootCamp'
+import BootCamp from '../Components/BootCamp';
+import FooterData from '../Components/FooterData';
 
 
 const Footer = () => {
     return (
-        <div id='contact' className="foot py-20">
+        <div id='contact' className="foot pt-20 ">
 
             {/* Waves */}
             <div className=" custom-shape-divider-top-1738261877">
@@ -18,6 +19,7 @@ const Footer = () => {
 
             <BootCamp/>
             <ContactCard/>
+            <FooterData/>
         </div>
     )
 }

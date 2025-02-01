@@ -1,10 +1,10 @@
 import React from 'react'
-import Home_Img from '../assets/College Home page pic 2.png'
+import Course_Img from '../assets/3d-rendering-student-character-b.png'
 import CourseCard from '../Components/Course_cards1';
 
 const CourseAds = () => {
     return (
-        <div className="course">
+        <div id='courses' className="course lg:py-8">
             {/* Waves */}
             <div className="custom-shape-divider-top-1738261877">
                 <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
@@ -33,39 +33,37 @@ const CourseAds = () => {
                 <div className="round"></div>
             </div>
 
-            <section className="content flex gap-4 mx-auto pt-20 sm:pt-10 pb-10 w-full lg:pt-20 flex-col sm:flex-row">
-                <h2 className="text-center font-bold text-3xl sm:text-4xl md:text-5xl lg:text-5xl sm:hidden">
-                    Our <span className="text-[var(--span_home)]">Trending</span> Courses
+            <section className="content flex gap-4 pt-20 sm:pt-10 pb-10 w-full lg:pt-20 flex-col sm:flex-row">
+                <h2 className="heading text-center sm:hidden">
+                    Our <span className="text-[var(--span)]">Trending</span> Courses
                 </h2>
 
 
                 <div className="left-course sm:flex  sm:basis-[40%] md:basis-[30%] justify-center items-center relative z-4 hidden sm:visible flex-col">
 
-                    <h2 className="text-center font-bold text-3xl sm:text-4xl  lg:text-5xl lg:mb-10 relative -top-10">
-                        Our <span className="text-[var(--span_home)]">Trending</span> Courses
+                    <h2 className="heading text-center lg:mb-1 relative -top-10 lg:-top-4">
+                        Our <span className="text-[var(--span)]">Trending</span> Courses
                     </h2>
 
-                    <div className="image-container relative  w-[80%]">
-                        <div className="blob w-[110%] h-[110%] absolute top-[100%] left-[100%] z-1 transform -translate-x-1/2 -translate-y-1/2"></div>
-                        <img src={Home_Img} alt="Students-Img" className="image w-full relative z-2" />
+                    <div className="image-container relative w-[80%]">
+                        <div className="blob w-[90%] h-[120%] absolute top-[120%] left-[90%] transform -translate-x-1/2 -translate-y-1/2"></div>
+                        <img src={Course_Img} alt="Students-Img" className="image w-full relative" />
                     </div>
                 </div>
 
 
-                <div className="right-course flex flex-wrap basis-[100%] sm:basis-[60%] md:basis-[70%] justify-evenly  items-center relative z-4 ">
+                <div className="right-course flex flex-wrap basis-[100%] sm:basis-[60%] md:basis-[70%] justify-evenly  items-center relative z-4">
                     <CourseCard
                         imageUrl="https://via.placeholder.com/300"
                         title="React Mastery"
                         description="Learn React from scratch and build real-world projects."
                         price={49.99}
-                        discount="50%"
                     />
                     <CourseCard
                         imageUrl="https://via.placeholder.com/300"
                         title="React Mastery"
                         description="Learn React from scratch and build real-world projects."
                         price={49.99}
-                        discount="50%"
                     />
 
                 </div>

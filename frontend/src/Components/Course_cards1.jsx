@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const CourseCard = ({ imageUrl, title, description, price}) => {
     return (
-        <div className="w-[80%] rounded-lg overflow-hidden shadow-[0_0_20px] bg-white relative sm:w-[300px] m-2 hover:scale-102">
+        <div className="w-[80%] rounded-lg overflow-hidden shadow-[0_0_20px] bg-white relative sm:w-[300px] m-2 transform hover:scale-105 transition-all duration-300 ease-in-out right-up">
                 <div className="absolute top-2 right-2 bg-[#ff8400] text-white text-sm font-bold px-3 py-1 rounded-full z-10">
                 ★ Populars
                 </div>

@@ -4,7 +4,7 @@ const FAQCard = ({ question, answer }) => {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <div className="w-full  overflow-hidden p-6 border-b-[var(--strock)] border-b-2">
+        <div className="w-full  overflow-hidden p-6 border-b-[var(--strock)] border-b-2 bottom-up">
             {/* Question and Toggle Button */}
             <div
                 className="flex justify-between items-center cursor-pointer"

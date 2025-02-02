@@ -34,18 +34,18 @@ const CourseAds = () => {
             </div>
 
             <section className="content flex gap-4 pt-20 sm:pt-10 pb-10 w-full lg:pt-20 flex-col sm:flex-row">
-                <h2 className="heading text-center sm:hidden">
+                <h2 className="heading text-center sm:hidden zoom-up">
                     Our <span className="text-[var(--span)]">Trending</span> Courses
                 </h2>
 
 
                 <div className="left-course sm:flex  sm:basis-[40%] md:basis-[30%] justify-center items-center relative z-4 hidden sm:visible flex-col">
 
-                    <h2 className="heading text-center lg:mb-1 relative -top-10 lg:-top-4">
+                    <h2 className="heading text-center lg:mb-1 relative -top-10 lg:-top-4 left-up">
                         Our <span className="text-[var(--span)]">Trending</span> Courses
                     </h2>
 
-                    <div className="image-container relative w-[80%]">
+                    <div className="image-container relative w-[80%] zoom-up">
                         <div className="blob w-[90%] h-[120%] absolute top-[120%] left-[90%] transform -translate-x-1/2 -translate-y-1/2"></div>
                         <img src={Course_Img} alt="Students-Img" className="image w-full relative" />
                     </div>

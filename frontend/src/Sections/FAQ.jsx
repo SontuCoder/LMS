@@ -14,7 +14,7 @@ const FAQ = () => {
             </div>
 
             <section className="">
-                <h4 className="text-center mb-5 heading">Some <span className="text-[var(--span)]">Importent</span> Questions</h4>
+                <h4 className="text-center mb-5 heading zoom-up">Some <span className="text-[var(--span)]">Importent</span> Questions</h4>
                 <div className="flex flex-wrap w-full justify-evenly items-center">
                     <FAQCard
                         question="What is Tailwind CSS?"

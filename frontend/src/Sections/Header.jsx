@@ -1,8 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import logo from '../assets/logo.jpg';
 import Navbar from '../Components/Navbar';
+import UserIcon from '../Components/UserIcon';
+import PropTypes from 'prop-types';
 
-const Header = () => {
+const Header = ({isLogin,onLogout}) => {
 
     const [navOpen, setNavOpen] = useState(false);
 
@@ -21,8 +23,6 @@ const Header = () => {
             return newMode;
         });
     };
-
-
 
     return (
         <header className='fixed top-0 left-0 w-full h-16 flex items-center z-40'>
@@ -49,7 +49,7 @@ const Header = () => {
 
                 <div className="flex justify-end">
                     <button
-                        className='modeBtn text-2xl'
+                        className='modeBtn text-2xl pt-1'
                         onClick={modeChange}
                     >
                         <span className="material-symbols-rounded cursor-pointer active:scale-95  transition-all duration-150 ease-in-out" 
@@ -59,15 +59,16 @@ const Header = () => {
                     </button>
                 </div>
 
-                <div className="">
-                <a href="/" className='logo'>
-                        <img src={logo} alt="logo" className='rounded-full ring-1 shadow-[0_0_10px_rgba(255,255,255,0.6)]  hover:scale-110 transition-all duration-200 ease-in-out' width={40} height={40} />
-                    </a>
-                </div>
+                <UserIcon isLogin={isLogin} onLogout={onLogout}/>
 
             </div>
         </header>
     );
 };
+
+Header.propTypes ={
+    isLogin: PropTypes.bool.isRequired,
+    onLogout: PropTypes.func.isRequired
+}
 
 export default Header;

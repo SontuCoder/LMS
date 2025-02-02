@@ -14,7 +14,7 @@ const Review = () => {
             </div>
 
             <section className="">
-                <h3 className="text-center mb-5 heading">Reviews About <span className="text-[var(--span)]">Our</span> Courses</h3>
+                <h3 className="text-center mb-5 heading zoom-up">Reviews About <span className="text-[var(--span)]">Our</span> Courses</h3>
                 <div className="flex flex-wrap w-full justify-evenly items-center">
                     <ReviewCard/>
                     <ReviewCard/>

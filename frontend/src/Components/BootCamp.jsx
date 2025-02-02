@@ -4,7 +4,7 @@ import Img from '../assets/image.png';
 const ImageOverlayCard = () => {
     return (
         <div
-            className="relative h-50 w-full bg-cover bg-center mb-4 md:h-70 lg:h-100"
+            className="relative h-50 w-full bg-cover bg-center mb-4 md:h-70 lg:h-100 left-up"
             style={{ backgroundImage: `url(${Img})` }}
         >
             

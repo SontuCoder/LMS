@@ -16,7 +16,8 @@ const ReviewCard = ({ avatarUrl, name = "Sontu", rating=4, review ="Very good" }
     };
 
     return (
-        <div className="rounded-lg overflow-hidden shadow-[0px_0px_10px_3px_var(--st)] review-card p-2 w-full max-w-100 m-2 sm:w-[45%] lg:w-[30%] hover:scale-105 ">
+        <div className="rounded-lg overflow-hidden shadow-[0px_0px_10px_3px_var(--st)] review-card p-2 w-full max-w-100 m-2 sm:w-[45%] lg:w-[30%] cursor-pointer bottom-up">
+
             {/* User Avatar and Name */}
             <div className="flex items-center space-x-4 mb-2">
                 <img

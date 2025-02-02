@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 export const Button1 = ({ href, lable }) => {
     return (
-        <a className="btn1 text-white bg-[var(--search)]" href={href}>
+        <a className="btn1 text-white bg-[var(--search)] zoom-up" href={href}>
             <span></span>
             <span></span>
             <span></span>

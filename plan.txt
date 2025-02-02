@@ -31,6 +31,7 @@ It is a Industrial level full stack LMS plartform, Highly protected from hacker 
 - **When User ask question Admin get notification, When Admin give answer User get mail.
 - **Delete Notifications automatically after 1 month.
 - **Delete or update cache data every 7days for speed up redis cache response.
+- **Smooth Scroll and animation.
 
 
 ---

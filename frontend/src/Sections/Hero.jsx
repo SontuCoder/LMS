@@ -1,13 +1,13 @@
-import React from 'react'
+import React from 'react';
 import Home_Img from '../assets/College Home page pic 2.png';
 import {Button1} from '../Components/Buttons';
 import TrustBanner from '../Components/TrustBanner';
 
 const Hero = () => {
     return (
-        <div id="home" className="home scroll-mt-16 ">
+        <div id="home" className="home scroll-mt-16">
             <section className='home-sec text-[var(--pt)]'>
-            <div className="left-side-home text-wrap w-[50%]">
+            <div className="text-wrap w-[40%] sm:w-[50%] ml-4 sm:ml-0">
                 <h1 className="heading zoom-up">
                     Gen<span className='text-[var(--span)]'>Z</span>Techno
                 </h1>
@@ -19,11 +19,10 @@ const Hero = () => {
                 </p>
 
 
-                <Button1 href={'https://www.google.com'} lable={'All Courses'}  />
+                <Button1 href={'/courses'} lable={'All Courses'}  />
                 <TrustBanner/>
             </div>
-
-
+            
             <div className="right-side-home flex flex-1 justify-center items-center relative w-[100%]">
 
                 <div className="image-container relative h-[90%] w-[80%] zoom-up">
@@ -36,5 +35,6 @@ const Hero = () => {
         </div>
     )
 }
+
 
 export default Hero

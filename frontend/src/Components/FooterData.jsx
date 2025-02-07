@@ -7,12 +7,12 @@ const FooterData = () => {
     const socialLinks = [
         {
             href: 'https://github.com/SontuCoder',
-            icon: <i class='bx bxl-github'></i>,
+            icon: <i className='bx bxl-github'></i>,
             alt: 'GitHub'
         },
         {
             href: 'https://www.linkedin.com/in/subhadip-maity-5ba595300/',
-            icon:<i class='bx bxl-linkedin' ></i>,
+            icon:<i className='bx bxl-linkedin' ></i>,
             alt: 'LinkedIn'
         },
         {
@@ -25,7 +25,7 @@ const FooterData = () => {
         },
         {
             href: 'https://www.instagram.com/subha_dip002/',
-            icon: <i class='bx bxl-instagram' ></i>,
+            icon: <i className='bx bxl-instagram' ></i>,
             alt: 'Instagram'
         },
     ];
@@ -171,7 +171,7 @@ const FooterData = () => {
                 </div>
 
                 <div className=" bg-[var(--foot)] text-white  font-semibold w-full absolute left-0 ">
-                    Developed By ❤️ <a href="" className='text-cyan-300 zoom-up'>SontuCoder</a>
+                    Developed By ❤️ <a href="https://github.com/SontuCoder" target='_blank' className='text-cyan-300 zoom-up'>SontuCoder</a>
                 </div>
             </div>
 

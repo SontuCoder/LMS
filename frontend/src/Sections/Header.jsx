@@ -3,9 +3,12 @@ import logo from '../assets/logo.jpg';
 import Navbar from '../Components/Navbar';
 import UserIcon from '../Components/UserIcon';
 import PropTypes from 'prop-types';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Header = ({isLogin,onLogout}) => {
-
+    const navigate = useNavigate();
+    const location = useLocation();
+    const isHome = location.pathname === "/";
     const [navOpen, setNavOpen] = useState(false);
 
     const [mode, setMode] = useState(() => localStorage.getItem("data-theme") === "dark");
@@ -34,7 +37,8 @@ const Header = ({isLogin,onLogout}) => {
                     </a>
                 </h1>
 
-                <div className=" w-[100%] relative flex justify-end ml:auto">
+                <div className="flex items-center gap-4">
+                {isHome? <div className=" w-[100%] relative flex justify-end ml:auto">
                     <button 
                         className='menu-button' 
                         onClick={()=>setNavOpen(!navOpen)}
@@ -45,7 +49,7 @@ const Header = ({isLogin,onLogout}) => {
                     </button>
 
                     <Navbar navOpen={navOpen} setNavOpen={setNavOpen}/>
-                </div>
+                </div>: <div></div>}
 
                 <div className="flex justify-end">
                     <button
@@ -60,6 +64,7 @@ const Header = ({isLogin,onLogout}) => {
                 </div>
 
                 <UserIcon isLogin={isLogin} onLogout={onLogout}/>
+                </div>
 
             </div>
         </header>

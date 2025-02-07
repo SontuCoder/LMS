@@ -19,11 +19,11 @@ const UserIcon = ({ isLogin, onLogout }) => {
     return (
         <>
             <div className="relative flex justify-center">
-                <button className="logo cursor-pointer" onClick={iconClick}>
+                <button className="logo cursor-pointer w-10" onClick={iconClick}>
                     <img
                         src={isLogin ? user1 : user2}
                         alt="logo"
-                        className="rounded-full ring-1 shadow-[0_0_10px_rgba(255,255,255,0.6)] hover:scale-110 transition-all duration-200 ease-in-out active:scale-95"
+                        className="rounded-full max-h-[100px] ring-1 shadow-[0_0_10px_rgba(255,255,255,0.6)] hover:scale-110 transition-all duration-200 ease-in-out active:scale-95"
                         width={40}
                         height={40}
                     />

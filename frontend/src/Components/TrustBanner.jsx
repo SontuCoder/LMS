@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import User from '../assets/logo.jpg'
 
 
@@ -14,12 +13,11 @@ export default function TrustBanner() {
             </div>
             <p className="text-sm text-[var(--pt)]">
                 <span className="font-medium">500K+</span> People already trusted us 
-            <Link
-                href="/courses"
+            <span
                 className="text-md font-extrabold text-[var(--span)] transition-colors ml-1 cursor-pointer"
             >
                 --{">"} View Courses
-            </Link>
+            </span>
             </p>
         </div>
     )

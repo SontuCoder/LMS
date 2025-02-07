@@ -1,9 +1,16 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 export const Button1 = ({ href, lable }) => {
+    const navigate = useNavigate();
+
+    const handleBtnClick = ()=>{
+        navigate(href);
+    }
+
     return (
-        <a className="btn1 text-white bg-[var(--search)] zoom-up" href={href}>
+        <a className="btn1 text-white bg-[var(--search)] zoom-up" onClick={()=>handleBtnClick()}>
             <span></span>
             <span></span>
             <span></span>
@@ -16,6 +23,6 @@ export const Button1 = ({ href, lable }) => {
 
 Button1.proTypes = {
     herf : PropTypes.string.isRequired,
-    lable : PropTypes.string.isRequired
+    lable : PropTypes.string.isRequired,
 }
 

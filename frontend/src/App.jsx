@@ -15,7 +15,7 @@ function App({isLogin,onLogout}) {
       <div className="App">
         <Header isLogin={isLogin} onLogout={onLogout} />
         <main className="relative top-8 flex flex-col items-center pt-6">
-          <Hero />
+          <Hero/>
           <CourseAds />
           <Review />
           <FAQ />
@@ -28,7 +28,7 @@ function App({isLogin,onLogout}) {
 
 App.propTypes ={
     isLogin: PropTypes.bool.isRequired,
-    onLogout: PropTypes.func.isRequired
+    onLogout: PropTypes.func.isRequired,
 }
 
 export default App

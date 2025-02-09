@@ -1,4 +1,4 @@
-import { StrictMode, useState } from 'react'
+import { Profiler, StrictMode, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './index.css';
@@ -6,6 +6,7 @@ import App from './App.jsx';
 import 'lenis/dist/lenis.css';
 import LoginSignup from './Sections/LoginSignup.jsx';
 import Courses from './Sections/Courses.jsx';
+import Profile from './Sections/Profile.jsx';
 
 function Root() {
   const [login, setLogin] = useState(Boolean(localStorage.getItem("user")));
@@ -28,6 +29,7 @@ function Root() {
         <Route path="/" element={<App isLogin={login} onLogout={handleLogout}/>} />
         <Route path="/login_signup" element={<LoginSignup onLogin={handleLogin} />} />
         <Route path="/courses" element={<Courses isLogin={login} onLogout={handleLogout}/>} />
+        <Route path="/profile" element={<Profile/>} />
       </Routes>
     </Router>
   );

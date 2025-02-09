@@ -18,8 +18,8 @@ const LoginSignup = ({ onLogin }) => {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     const [showPassword, setShowPassword] = useState(false);
-    const [loginPage, setLoginPage] = useState(false);
-    const [otpPage, setOtpPage] = useState(true);
+    const [loginPage, setLoginPage] = useState(true);
+    const [otpPage, setOtpPage] = useState(false);
     const [correctOTP, setcorrectOTP] = useState(true);
     const [shake, setShake] = useState(false);
 
@@ -49,7 +49,7 @@ const LoginSignup = ({ onLogin }) => {
 
     return (
         <div className="login-background flex items-center justify-center px-0 py-20 bg-no-repeat bg-cover min-h-screen bg-center">
-            <div className="login-form-container flex max-w-[90%] border-1 border-[var(--st)] ">
+            <div className="login-form-container flex max-w-[90%] border-1 border-[var(--st)] overflow-hidden">
                 <AnimatePresence mode="wait">
                     <div className="login-left sm:flex items-center justify-center flex-col hidden sm:visible w-[55%] bg-[rgba(255,255,255,0.2)]">
                         <div className="relative">
@@ -136,7 +136,7 @@ const LoginSignup = ({ onLogin }) => {
                                                     Login
                                                 </button>
                                             </form>
-                                            <p className='text-xs my-2 font-semibold text-center'>If, You are a New user then, <button onClick={() => setLoginPage(prev => !prev)} className=""> Signup</button> first.</p>
+                                            <p className='text-xs my-2 font-semibold text-center'>If, You are a New user then, <button onClick={() => setLoginPage(prev => !prev)} className="text-[var(--span)]"> Signup</button> first.</p>
                                             <div className="social-auth-login w-full my-4 flex justify-evenly">
                                                 <span className="social-auth shadow-lg w-10 h-10 flex justify-center items-center text-3xl bg-slate-400 rounded transition duration-200 hover:bg-slate-500 active:scale-95"><i className='bx bxl-google'></i></span>
                                                 <span className="social-auth shadow-lg w-10 h-10 flex justify-center items-center text-3xl bg-slate-400 rounded transition duration-200 hover:bg-slate-500 active:scale-95"><i className='bx bxl-github'></i></span>
@@ -216,7 +216,7 @@ const LoginSignup = ({ onLogin }) => {
                                                     Sign Up
                                                 </button>
                                             </form>
-                                            <p className='text-xs my-2 font-semibold text-center'>If, You have any account then, <button onClick={() => setLoginPage(prev => !prev)} className=""> Login</button>.</p>
+                                            <p className='text-xs my-2 font-semibold text-center'>If, You have any account then, <button onClick={() => setLoginPage(prev => !prev)} className="text-[var(--span)]"> Login</button>.</p>
                                             <div className="social-auth-login w-full my-4 flex justify-evenly">
                                                 <span className="social-auth shadow-lg w-10 h-10 flex justify-center items-center text-3xl bg-slate-400 rounded transition duration-200 hover:bg-slate-500 active:scale-95"><i className='bx bxl-google'></i></span>
                                                 <span className="social-auth shadow-lg w-10 h-10 flex justify-center items-center text-3xl bg-slate-400 rounded transition duration-200 hover:bg-slate-500 active:scale-95"><i className='bx bxl-github'></i></span>

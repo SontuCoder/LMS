@@ -16,6 +16,7 @@ const UserIcon = ({ isLogin, onLogout }) => {
         onLogout();
     }
 
+
     return (
         <>
             <div className="relative flex justify-center">
@@ -34,7 +35,7 @@ const UserIcon = ({ isLogin, onLogout }) => {
                         }`}
                 >
                     {isLogin? <>
-                        <Link className="text-zinc-50/50 hover:text-zinc-50 cursor-pointer transition-all duration-300 ease-in-out active:scale-95">
+                        <Link className="text-zinc-50/50 hover:text-zinc-50 cursor-pointer transition-all duration-300 ease-in-out active:scale-95" to='/profile'>
                             Profile
                         </Link>
                         <button className="text-zinc-50/50 hover:text-zinc-50 cursor-pointer transition-all duration-300 ease-in-out active:scale-90" onClick={Logout} >

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { ReactLenis } from 'lenis/react';
 import Header from "./Header";
 import { useNavigate } from 'react-router-dom';
+import Course_card2 from '../Components/Course_card2';
 
 
 const Courses = ({ isLogin, onLogout }) => {
@@ -30,8 +31,8 @@ const Courses = ({ isLogin, onLogout }) => {
             <div>
                 <Header isLogin={isLogin} onLogout={onLogout} />
                 <main className="relative top-10 flex flex-col items-center pt-6">
-                    <div className="bg-slate-600 h-15 w-full flex items-center justify-between px-4 fixed">
-                        <button className="bg-white flex w-8 h-8 items-center justify-center rounded-full mr-4 hover:bg-slate-400 hover:scale-105 active:scale-95 transition duration-50 active:bg-slate-400 cursor-pointer" onClick={()=>navigateHome()}>
+                    <div className="bg-slate-600 h-15 w-full flex items-center justify-between px-4 fixed z-10 shadow-2xl">
+                        <button className="bg-white flex w-8 h-8 items-center justify-center rounded-full mr-2 hover:bg-slate-400 hover:scale-105 active:scale-95 transition duration-50 active:bg-slate-400 cursor-pointer" onClick={()=>navigateHome()}>
                             <span className="material-symbols-rounded">arrow_back</span>
                         </button>
                         <div className="flex items-center ">
@@ -56,7 +57,11 @@ const Courses = ({ isLogin, onLogout }) => {
                         </div>
                     </div>
 
-
+                    <div className="pt-20 flex flex-col w-full px-5 bg-[var(--b1)] min-h-screen">
+                        <Course_card2/>
+                        <Course_card2/>
+                        <Course_card2/>
+                    </div>
                 </main>
             </div>
         </ReactLenis>

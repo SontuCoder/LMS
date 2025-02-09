@@ -29,7 +29,7 @@ const Header = ({isLogin,onLogout}) => {
 
     return (
         <header className='fixed top-0 left-0 w-full h-16 flex items-center z-40'>
-            <div className=" headerdiv max-w-screen-2xl w-full mx-auto px-4 flex justify-between items-center md:px-8 md:grid">
+            <div className=" headerdiv max-w-screen-2xl w-full mx-auto px-4 flex justify-between items-center md:px-8">
 
                 <h1>
                     <a href="/" className='logo'>
